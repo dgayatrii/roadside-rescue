@@ -1,0 +1,202 @@
+/* =========================================
+   Base Styles (Classic Bold - Black & Red)
+   Updated to work with Bootstrap 5
+========================================= */
+
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-red: #D32F2F;
+    --background-dark: #1a1a1a;
+    --container-bg: #2c2c2c;
+    --text-bright: #FFFFFF;
+    --text-light: #F5F5F5;
+    --border-color: #444444;
+}
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lora', 'Georgia', serif;
+}
+
+h1 { color: var(--text-bright); }
+h2, h3 { color: var(--primary-red); }
+
+a {
+    color: var(--primary-red);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #F44336;
+    text-decoration: none;
+}
+
+/* --- Bootstrap Component Overrides --- */
+
+/* Navbar */
+.navbar {
+    background-color: var(--container-bg);
+    border-bottom: 2px solid var(--primary-red);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Lora', serif;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: var(--primary-red);
+}
+
+/* Buttons */
+.btn.btn-custom-red {
+    background-color: var(--primary-red);
+    color: var(--text-bright);
+    padding: 12px 28px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn.btn-custom-red:hover {
+    background-color: #E53935;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --- Custom Sections & Effects --- */
+
+.main-content {
+    padding: 4rem 0;
+}
+
+.main-content h1, .main-content h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.7)), url('https://images.unsplash.com/photo-1568605117036-5fe5e7185743?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+    padding: 6rem 0;
+    text-align: center;
+    background-attachment: fixed;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+/* Service Cards */
+.service-card {
+    background: var(--container-bg);
+    padding: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    height: 100%; /* Important for equal height columns */
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    border-color: var(--primary-red);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.service-card .card-content {
+    padding: 1.5rem;
+}
+
+
+/* --- Forms & Validation --- */
+.form-container {
+    background: var(--container-bg);
+    padding: 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.form-control {
+    background-color: #3d3d3d;
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+}
+
+.form-control:focus {
+    background-color: #3d3d3d;
+    color: var(--text-light);
+    border-color: var(--primary-red);
+    box-shadow: 0 0 5px rgba(211, 47, 47, 0.5);
+}
+
+.form-group .error-message {
+    color: #F44336;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 5px;
+    min-height: 1.2em;
+}
+
+.form-group.error .form-control {
+    border-color: #D32F2F;
+}
+
+.form-group.success .form-control {
+    border-color: #4CAF50;
+}
+
+/* --- Footer --- */
+.footer {
+    background: #000;
+    color: #a9a9a9;
+    padding: 3rem 0;
+    margin-top: 2rem;
+    border-top: 2px solid var(--primary-red);
+}
+
+.footer a { color: var(--text-light); }
+.footer a:hover { color: var(--primary-red); }
+.footer h3 { color: var(--text-bright); }
+
+/* --- Responsiveness Adjustment for Parallax --- */
+@media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll; /* Disables parallax on mobile for better performance */
+    }
+}

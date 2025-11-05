@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadside Rescue | Home | 24/7 Assistance in Nashik</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { box-sizing: border-box; }
+        :root {
+            --primary-blue: #007bff; --accent-red: #e50914; --dark-bg: #0d1117; --light-blue-glow: #00ccff; --text-light: #e0e0e0; --text-dark: #333; --font-heading: 'Orbitron', sans-serif; --font-body: 'Lato', sans-serif;
+        }
+        body { font-family: var(--font-body); color: var(--text-light); background-color: var(--dark-bg); overflow-x: hidden; position: relative; }
+        .circuit-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.1; }
+        .circuit-line { position: absolute; background: linear-gradient(90deg, transparent, var(--light-blue-glow), transparent); animation: pulse 3s ease-in-out infinite; }
+        .circuit-line.horizontal { height: 2px; width: 200px; }
+        .circuit-line.vertical { width: 2px; height: 200px; }
+        .circuit-node { position: absolute; width: 8px; height: 8px; background: var(--light-blue-glow); border-radius: 50%; box-shadow: 0 0 10px var(--light-blue-glow); animation: glow 2s ease-in-out infinite alternate; }
+        @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        @keyframes glow { 0% { box-shadow: 0 0 5px var(--light-blue-glow); } 100% { box-shadow: 0 0 20px var(--light-blue-glow), 0 0 30px var(--light-blue-glow); } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        .navbar { background-color: rgba(13, 17, 23, 0.95) !important; border-bottom: 1px solid rgba(0, 204, 255, 0.2); backdrop-filter: blur(10px); transition: all 0.3s ease; }
+        .navbar-brand { font-family: var(--font-heading); font-weight: 900; color: var(--light-blue-glow) !important; text-shadow: 0 0 10px var(--light-blue-glow); font-size: 1.8rem; }
+        .nav-link { color: var(--text-light) !important; transition: all 0.3s ease; position: relative; }
+        .nav-link:hover, .nav-link.active { color: var(--light-blue-glow) !important; text-shadow: 0 0 8px var(--light-blue-glow); }
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: var(--light-blue-glow); transition: all 0.3s ease; transform: translateX(-50%); }
+        .nav-link:hover::after { width: 100%; box-shadow: 0 0 5px var(--light-blue-glow); }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--light-blue-glow); text-shadow: 0 0 10px rgba(0, 204, 255, 0.5); }
+        .display-3, .display-5 { font-weight: 700; }
+        .btn-custom-red { background: linear-gradient(45deg, var(--accent-red), #ff3344); color: var(--text-light); border: none; padding: 15px 35px; font-weight: 700; border-radius: 8px; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(229, 9, 20, 0.4); position: relative; overflow: hidden; }
+        .btn-custom-red::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); transition: left 0.5s ease; }
+        .btn-custom-red:hover::before { left: 100%; }
+        .btn-custom-red:hover { background: linear-gradient(45deg, #ff3344, #ff5566); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(229, 9, 20, 0.6); }
+        .btn-primary { background: linear-gradient(45deg, var(--primary-blue), #0099ff); border: none; box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3); transition: all 0.3s ease; }
+        .btn-primary:hover { background: linear-gradient(45deg, #0056b3, #0088ee); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 123, 255, 0.5); }
+        .hero { background: linear-gradient(135deg, rgba(13, 17, 23, 0.8), rgba(0, 204, 255, 0.1)), radial-gradient(circle at 20% 80%, rgba(0, 204, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(229, 9, 20, 0.1) 0%, transparent 50%); padding: 120px 0; text-align: center; position: relative; min-height: 80vh; display: flex; align-items: center; justify-content: center; border-bottom: 2px solid rgba(0, 204, 255, 0.3); overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%2300ccff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>'); animation: float 6s ease-in-out infinite; }
+        .hero-content { position: relative; z-index: 2; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; animation: float 4s ease-in-out infinite; }
+        .hero p { font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9; }
+        .service-card { background: rgba(13, 17, 23, 0.8); border: 1px solid rgba(0, 204, 255, 0.2); border-radius: 15px; padding: 2rem; margin-bottom: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--light-blue-glow), var(--accent-red), var(--light-blue-glow)); transform: translateX(-100%); transition: transform 0.5s ease; }
+        .service-card:hover::before { transform: translateX(0); }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--light-blue-glow); box-shadow: 0 15px 40px rgba(0, 204, 255, 0.2); }
+        .service-icon { font-size: 3rem; color: var(--light-blue-glow); margin-bottom: 1rem; text-shadow: 0 0 15px var(--light-blue-glow); }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .hero p { font-size: 1.1rem; } .navbar-brand { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+    <div class="circuit-bg">
+        <div class="circuit-line horizontal" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="circuit-line vertical" style="top: 15%; right: 10%; animation-delay: 1s;"></div>
+        <div class="circuit-node" style="top: 20%; left: 30%; animation-delay: 1.5s;"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🚗 ROADSIDE RESCUE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.php">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="display-3 mb-4">24/7 Roadside Rescue</h1>
+                <p class="lead mb-4">Professional automotive assistance in Nashik and surrounding areas. Fast, reliable, and always ready to help.</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="contact.php" class="btn btn-custom-red btn-lg">🚨 Emergency Call</a>
+                    <a href="services.php" class="btn btn-primary btn-lg">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 mb-3">Our Services</h2>
+                <p class="lead">Comprehensive roadside assistance when you need it most</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">🔧</div>
+                        <h4>Emergency Repairs</h4>
+                        <p>Quick fixes to get you back on the road safely. Our skilled technicians handle common breakdowns on-site.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">🚛</div>
+                        <h4>Vehicle Towing</h4>
+                        <p>Safe and secure towing services to the nearest garage or your preferred location in Nashik.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">🔋</div>
+                        <h4>Battery Jump Start</h4>
+                        <p>Dead battery? No problem! We'll get your vehicle started and check your charging system.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="services.php" class="btn btn-primary btn-lg">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(13, 17, 23, 0.98)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(13, 17, 23, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
